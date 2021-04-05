@@ -1,4 +1,4 @@
-import { HttpException, Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User as UserEntity } from './user.entity';
 import { Repository, createQueryBuilder } from 'typeorm';
@@ -42,10 +42,10 @@ export class UserService {
     if (count === 0) {
       return this.userRepository.save(data);
     } else {
-      throw new HttpException({
-        status: 461,
-        message: '当前账号已登记'
-      }, 461);
+      return {
+        code: 461,
+        message: '当前账号已登记过'
+      };
     }
   }
 
