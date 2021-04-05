@@ -1,10 +1,10 @@
-import {Entity, PrimaryGeneratedColumn, Column} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity('user')
 export class User {
 
     @PrimaryGeneratedColumn()
-    id: number;
+    id?: number;
 
     @Column()
     firstName: string;
@@ -27,7 +27,10 @@ export class User {
     @Column()
     status: number; // 状态： 0 未处理 1 已注册 2 忽略
 
-    @Column('text')
-    extra: string;
+    @Column()
+    type: number; // 类型： 1 视频库 2 书籍库 3 音频库
+
+    @Column({ nullable: true, type: 'text' })
+    extra?: string;
 
 }
