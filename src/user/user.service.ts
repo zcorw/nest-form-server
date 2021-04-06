@@ -5,6 +5,7 @@ import { Repository, createQueryBuilder } from 'typeorm';
 import { UserDto } from './user.dto';
 import { pageDto, reponseDto } from '../app.dto';
 import { VIDEO, BOOK, AUDIO } from '../utils/type';
+
 @Injectable()
 export class UserService {
   constructor(
@@ -39,7 +40,7 @@ export class UserService {
 
   async createUser(data: UserEntity) {
     const count = await this.userRepository.createQueryBuilder().where({ tgId: data.tgId }).getCount();
-    if (count === 0) {
+    if (count === 0 || process.env.NODE_ENV === 'development') {
       return this.userRepository.save(data);
     } else {
       return {
