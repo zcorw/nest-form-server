@@ -36,6 +36,12 @@ export class UserController {
       ...user,
       status: 0,
       type: VIDEO,
-    })
+    }).then((res) => ({
+      code: 0,
+      data: res
+    })).catch((e) => ({
+      code: 461,
+      data: e.message
+    }))
   }
 }

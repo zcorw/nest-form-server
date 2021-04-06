@@ -1,6 +1,10 @@
-{
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const dotenv = require('dotenv');
+dotenv.config();
+
+module.exports = {
   "type": "sqlite",
-  "database": "4lib.db",
+  "database": process.env.DB_PATH,
   "synchronize": true,
   "logging": false,
   "entities": ["dist/**/*.entity.js"],

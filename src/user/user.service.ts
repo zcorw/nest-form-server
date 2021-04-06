@@ -43,10 +43,7 @@ export class UserService {
     if (count === 0 || process.env.NODE_ENV === 'development') {
       return this.userRepository.save(data);
     } else {
-      return {
-        code: 461,
-        message: '当前账号已登记过'
-      };
+      throw new Error('当前账号已登记过');
     }
   }
 
