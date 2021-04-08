@@ -41,7 +41,7 @@ export class UserController {
       data: res
     })).catch((e) => ({
       code: 461,
-      data: e.message
+      message: e.message
     }))
   }
 }

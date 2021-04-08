@@ -39,12 +39,12 @@ export class UserService {
   }
 
   async createUser(data: UserEntity) {
-    const count = await this.userRepository.createQueryBuilder().where({ tgId: data.tgId }).getCount();
-    if (count === 0 || process.env.NODE_ENV === 'development') {
+    // const count = await this.userRepository.createQueryBuilder().where({ tgId: data.tgId }).getCount();
+    // if (count === 0 || process.env.NODE_ENV === 'development') {
       return this.userRepository.save(data);
-    } else {
-      throw new Error('当前账号已登记过');
-    }
+    // } else {
+    //   throw new Error('当前账号已登记过');
+    // }
   }
 
   async updateStatus(id: number, status: number) {
