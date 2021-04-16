@@ -33,4 +33,12 @@ export class User {
     @Column({ nullable: true, type: 'text' })
     extra?: string;
 
+    @Column({
+        name: "created_at",
+        type: "timestamp",
+        default: () => "CURRENT_TIMESTAMP",
+        precision: 6,
+    })
+    createdAt: Date;
+
 }
