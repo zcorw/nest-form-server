@@ -1,7 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { UserService } from './user.service';
 import { pageDto } from '../app.dto';
-import { VIDEO } from 'src/utils/type';
+import { BOOK, VIDEO } from 'src/utils/type';
 
 export type UserType = {
   firstName: string;
@@ -31,11 +31,26 @@ export class UserController {
   }
 
   @Post('add/video')
-  create(@Body() user: UserType) {
+  createVideo(@Body() user: UserType) {
     return this.UesrService.createUser({
       ...user,
       status: 0,
       type: VIDEO,
+    }).then((res) => ({
+      code: 0,
+      data: res
+    })).catch((e) => ({
+      code: 461,
+      message: e.message
+    }))
+  }
+
+  @Post('add/book')
+  createBook(@Body() user: UserType) {
+    return this.UesrService.createUser({
+      ...user,
+      status: 0,
+      type: BOOK,
     }).then((res) => ({
       code: 0,
       data: res
