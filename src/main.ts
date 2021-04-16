@@ -6,6 +6,6 @@ config();
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(7900);
+  await app.listen(7900, '127.0.0.1');
 }
 bootstrap();
