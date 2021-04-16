@@ -34,11 +34,10 @@ export class User {
     extra?: string;
 
     @Column({
-        name: "created_at",
-        type: "timestamp",
-        default: () => "CURRENT_TIMESTAMP",
-        precision: 6,
+        name: "createdAt",
+        type: 'int',
+        default: () => Date.now(),
     })
-    createdAt: Date;
+    createdAt?: Date;
 
 }
